@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * 色彩角色沿用 PersonalGate 设计系统（浅色为默认，深色为同名角色）。
+ * 变量以 "R G B" 三元组存放，供 Tailwind 的 rgb(var(--x) / <alpha-value>) 使用。
+ */
+:root {
+  color-scheme: light;
+
+  --pg-window: 255 255 255;
+  --pg-sidebar: 244 246 249;
+  --pg-surface: 255 255 255;
+  --pg-input: 255 255 255;
+  --pg-status: 248 250 255;
+  --pg-text: 28 37 56;
+  --pg-text-strong: 17 24 39;
+  --pg-muted: 104 115 138;
+  --pg-muted-weak: 138 148 168;
+  --pg-border: 228 232 239;
+  --pg-control-border: 224 229 239;
+  --pg-primary: 72 100 255;
+  --pg-primary-hover: 58 85 237;
+  --pg-primary-pressed: 48 73 214;
+  --pg-primary-disabled: 192 202 248;
+  --pg-success: 22 163 74;
+  --pg-warning: 217 119 6;
+  --pg-danger: 220 38 38;
+  --pg-info: 14 116 233;
+  --pg-viz: 124 92 255;
+  --pg-selected: 237 243 255;
+  --pg-focus: 121 147 255;
+  --pg-shadow: 0 2px 18px rgba(33, 57, 104, 0.047);
+  --pg-shadow-lift: 0 6px 24px rgba(33, 57, 104, 0.08);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --pg-window: 21 24 30;
+  --pg-sidebar: 27 31 39;
+  --pg-surface: 32 37 47;
+  --pg-input: 26 32 42;
+  --pg-status: 34 44 60;
+  --pg-text: 230 235 244;
+  --pg-text-strong: 241 244 250;
+  --pg-muted: 162 175 197;
+  --pg-muted-weak: 132 146 168;
+  --pg-border: 52 61 78;
+  --pg-control-border: 58 68 87;
+  --pg-primary: 72 100 255;
+  --pg-primary-hover: 58 85 237;
+  --pg-primary-pressed: 48 73 214;
+  --pg-primary-disabled: 59 71 112;
+  --pg-success: 52 211 153;
+  --pg-warning: 251 191 36;
+  --pg-danger: 248 113 113;
+  --pg-info: 96 165 250;
+  --pg-viz: 167 139 250;
+  --pg-selected: 46 64 100;
+  --pg-focus: 121 147 255;
+  --pg-shadow: 0 2px 18px rgba(0, 0, 0, 0.118);
+  --pg-shadow-lift: 0 8px 26px rgba(0, 0, 0, 0.28);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: rgb(var(--pg-window));
+    color: rgb(var(--pg-text));
+    font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', 'Segoe UI', system-ui, 'PingFang SC', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgb(var(--pg-primary) / 0.18);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--pg-focus));
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--pg-muted) / 0.32);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--pg-muted) / 0.5);
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-ink-700 bg-ink-850 shadow-pg;
+  }
+
+  .panel-soft {
+    @apply rounded-xl border border-ink-700/80 bg-ink-900/70;
+  }
+
+  .num {
+    @apply font-mono tabular-nums;
+  }
+
+  .label {
+    @apply text-[11px] uppercase tracking-[0.12em] text-text-muted;
+  }
+
+  .page-title {
+    @apply text-[30px] font-bold leading-tight text-text-strong xl:text-[32px];
+  }
+
+  .page-subtitle {
+    @apply text-[13px] leading-relaxed text-text-secondary;
+  }
+
+  .section-title {
+    @apply text-[15px] font-medium text-text-primary;
+  }
+
+  .metric-value {
+    @apply num text-[28px] font-semibold leading-none text-text-strong;
+  }
+
+  .table-shell {
+    @apply w-full overflow-x-auto;
+  }
+
+  .table-shell table {
+    @apply w-full border-collapse;
+  }
+
+  .table-shell thead th {
+    @apply bg-ink-800 px-2.5 py-2 text-left text-[12px] font-normal text-text-secondary;
+  }
+
+  .table-shell tbody td {
+    @apply border-t border-ink-700/70 px-2.5 py-[13px] text-[13px] text-text-primary;
+  }
+
+  .table-shell tbody tr {
+    @apply transition-colors;
+  }
+
+  .table-shell tbody tr:hover {
+    @apply bg-ink-800/70;
+  }
+
+  .table-shell tbody tr[data-selected='true'] {
+    background: rgb(var(--pg-selected));
+  }
+}

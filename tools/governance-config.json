@@ -1,0 +1,9 @@
+{
+  "docs_root": "docs",
+  "required_frontmatter": ["status", "scope", "updated"],
+  "allowed_status": ["草稿", "现行", "历史", "废弃"],
+  "max_chars": 15000,
+  "index_prefix": "00-",
+  "index_min_notes": 2,
+  "ci_allow_missing_prefixes": []
+}

@@ -1,0 +1,60 @@
+{
+  "experiment": "MIX_RGB_IR_DUAL",
+  "mAP50": 0.8360399726591672,
+  "mAP50_95": 0.6054486262872153,
+  "per_class": {
+    "car": 0.9740010764580833,
+    "truck": 0.8077250813699088,
+    "bus": 0.9626402080091054,
+    "van": 0.7049221340472329,
+    "freight_car": 0.730911363411505
+  },
+  "weights": {
+    "rgb": "/root/autodl-tmp/unified_training_scheme/all_merged_training/runs/baseline/baseline_rgb/weights/best.pt",
+    "ir": "/root/autodl-tmp/unified_training_scheme/all_merged_training/runs/baseline/baseline_ir/weights/best.pt",
+    "dual_models": [
+      {
+        "name": "dual_l",
+        "weights": "/root/autodl-tmp/new_data_v2/runs/dual_only_pairwise_softcv_acsl_ahrl_l/best.pt",
+        "backbone": "/root/autodl-tmp/backup/yolo26/yolo26l.pt",
+        "wbf_weight": 1.2,
+        "enabled": true
+      },
+      {
+        "name": "dual_6_0",
+        "weights": "/root/autodl-tmp/new_data_v2/runs/6.0/best.pt",
+        "backbone": "/root/autodl-tmp/backup/yolo26/yolo26m.pt",
+        "wbf_weight": 0.95,
+        "enabled": true
+      },
+      {
+        "name": "dual_l_50",
+        "weights": "/root/autodl-tmp/new_data_v2/runs/dual_only_pairwise_softcv_acsl_ahrl_l_50/best.pt",
+        "backbone": "/root/autodl-tmp/backup/yolo26/yolo26l.pt",
+        "wbf_weight": 1.0,
+        "enabled": true
+      }
+    ]
+  },
+  "branches": {
+    "USE_RGB": true,
+    "USE_IR": true,
+    "USE_DUAL": true
+  },
+  "wbf": {
+    "branch_weights": {
+      "rgb": 1.7,
+      "ir": 1.95,
+      "dual": {
+        "dual_l": 1.2,
+        "dual_6_0": 0.95,
+        "dual_l_50": 1.0
+      }
+    },
+    "iou_thr": 0.58,
+    "skip_box_thr": 0.01,
+    "final_conf": 0.1,
+    "conf": 0.05,
+    "imgsz": 1024
+  }
+}

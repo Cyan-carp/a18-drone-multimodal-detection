@@ -1,0 +1,24 @@
+# 运行时产物
+data/
+!data/.gitkeep
+
+# 构建与依赖
+target/
+.tools/
+frontend/node_modules/
+frontend/dist/
+legacy/frontend-vue/node_modules/
+tools/e2e/node_modules/
+tools/e2e/.shots/
+
+# 工具与系统
+.idea/
+.vscode/
+*.iml
+*.log
+.DS_Store
+Thumbs.db
+
+# 上传与导出临时文件
+uploads/
+*.tmp

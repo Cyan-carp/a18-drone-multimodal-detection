@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  application:
+    name: a18-demo
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 40MB
+  mvc:
+    async:
+      request-timeout: 60000
+  jackson:
+    serialization:
+      indent-output: false
+
+app:
+  # 运行数据根目录（相对启动目录）：scenarios / uploads / records
+  data-dir: data
+  # 历史任务保留条数，超出按时间淘汰最旧记录
+  history-limit: 500
+  mock:
+    # 模拟引擎默认参数，与 config/reference/wbf_best_current.json 对齐
+    conf: 0.10
+    iou: 0.58
+    imgsz: 1024
+    scenario-count: 10
+
+logging:
+  level:
+    root: INFO
+    com.example.traffic: INFO
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%thread] %logger{24} - %msg%n"

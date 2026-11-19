@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A18 无人机视角多模态小目标检测 · 演示控制台</title>
+    <meta name="description" content="无人机视角多模态小目标检测演示平台：双模态检测工作台、批量任务与实时日志。" />
+    <script>
+      // 首屏前确定主题，避免浅色/深色闪烁；只影响外观，不改业务状态。
+      ;(function () {
+        try {
+          var saved = localStorage.getItem('a18-theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light')
+        } catch (error) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
